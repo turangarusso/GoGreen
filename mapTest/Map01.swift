@@ -23,6 +23,13 @@ let MapLocations = [
     MapLocation(name: "Drinking Fountain", latitude: 40.8321628, longitude: 14.2407789, fontana: true, point: false, recycle: false, address: "Villa Comunale, 80122 Napoli NA", description: "In this location you can drink potable water for free.", imageName: "fountain" ),
 ]
 
+let MapLocationsClass = [
+    MaplocClass(name: "Drinking Fountain", latitude: 40.837208, longitude: 14.306232, fontana: true, point: false, recycle: false, address: "Corso N. Protopisani, 70, 80146 Napoli NA", description: "In this location you can drink potable water for free.", imageName: "fountain" ),
+    MaplocClass(name: "Waste Depot", latitude: 40.89356260547285, longitude: 14.227367128290185, fontana: false, point: false, recycle: true, address: "Via Campano, 80145 Napoli NA", description: "Waste Recycling Depots are a convenient way to throw away the stuff you don't need anymore.", imageName: "recycle"),
+    MaplocClass(name: "Drinking Fountain", latitude: 40.826329, longitude: 14.205032, fontana: true, point: false, recycle: false, address: "Piazza Italia, 80125 Napoli NA", description: "In this location you can drink potable water for free.", imageName: "fountain" ),
+    MaplocClass(name: "Drinking Fountain", latitude: 40.8321628, longitude: 14.2407789, fontana: true, point: false, recycle: false, address: "Villa Comunale, 80122 Napoli NA", description: "In this location you can drink potable water for free.", imageName: "fountain" ),
+]
+
 struct Map01: View {
     
     private enum Field: Int, CaseIterable{
@@ -39,7 +46,7 @@ struct Map01: View {
     
     @State var isSearching = false // search bar tap check
     
-    @State private var selectedPlace: MapLocation? // used for annotations sheet
+    @State private var selectedPlace: MaplocClass? // used for annotations sheet
     
     @State var latitude01 = 40.837208
     
@@ -346,11 +353,11 @@ struct Map01: View {
     
     
     
-    var searchResults: [MapLocation] {
+    var searchResults: [MaplocClass] {
         if text.isEmpty {
-            return MapLocations
+            return MapLocationsClass
         } else {
-            return MapLocations.filter { $0.name.contains(text) }
+            return MapLocationsClass.filter { $0.name.contains(text) }
         }
     }//search a point
     
